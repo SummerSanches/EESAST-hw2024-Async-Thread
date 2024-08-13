@@ -61,8 +61,6 @@ public class ValueExpr(int initVal) : Expr
     {
         get
         {
-            // TODO 1:读取操作
-            return val;
             lock (valLock)
                 return val;
         }
@@ -105,12 +103,12 @@ public class ValueExpr(int initVal) : Expr
 public class AddExpr : Expr
 {
     int val = 0;
+    readonly object valLock = new();
     public override int Val
     {
         get
         {
             // TODO 5:读取操作
-             return val;
              lock (valLock)
                  return val;
         }
